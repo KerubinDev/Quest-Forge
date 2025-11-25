@@ -1,279 +1,279 @@
-# QuestForge - Escopo Inicial
+# QuestForge - Initial Scope
 
-**Projeto Integrador Final — Técnico em Desenvolvimento de Sistemas**  
-**Aluno:** KerubinDev  
+**Final Integrating Project — Technical Course in Systems Development**  
+**Student:** KerubinDev  
 **Professor:** Gabriel Barros  
-**Data:** Novembro de 2025
+**Date:** November 2025
 
 ---
 
-## 1. Descrição do Programa
+## 1. Program Description
 
-O **QuestForge** é uma plataforma integrada para gerenciamento de campanhas de RPG de mesa. O sistema permite que Mestres (Game Masters) gerenciem todos os aspectos de uma campanha de forma centralizada e organizada, enquanto jogadores acompanham seus personagens e o progresso da história através de uma interface mobile dedicada.
+**QuestForge** is an integrated platform for managing tabletop RPG campaigns. The system allows Game Masters to manage all aspects of a campaign in a centralized and organized manner, while players track their characters and story progress through a dedicated mobile interface.
 
-O programa resolve o problema de fragmentação de informações em campanhas de RPG, oferecendo um único lugar para armazenar e gerenciar campanhas, personagens, NPCs, itens, sessões e mídia (mapas, imagens).
-
----
-
-## 2. Funcionalidades Principais
-
-### 2.1. Para o Mestre (Interface Web)
-
-O Mestre tem acesso a um painel completo de gerenciamento com as seguintes funcionalidades:
-
-**Autenticação:**
-- Login e logout seguro
-- Registro de nova conta
-- Recuperação de senha
-
-**Gestão de Campanhas:**
-- Criar novas campanhas com nome, descrição e ambientação
-- Editar informações da campanha
-- Visualizar todas as suas campanhas
-- Deletar campanhas
-- Convidar jogadores para participar
-
-**Gestão de Personagens:**
-- Criar fichas de personagens de jogadores com atributos (Força, Destreza, Constituição, Inteligência, Sabedoria, Carisma)
-- Editar informações dos personagens
-- Visualizar fichas completas
-- Deletar personagens
-- Gerenciar inventário de cada personagem
-
-**Gestão de NPCs:**
-- Criar personagens não-jogáveis com descrição e papel na campanha
-- Editar e visualizar NPCs
-- Deletar NPCs
-- Organizar por relacionamentos
-
-**Gestão de Itens:**
-- Criar itens, armas, armaduras e artefatos
-- Categorizar por tipo e raridade
-- Editar e visualizar itens
-- Atribuir itens aos personagens
-- Deletar itens
-
-**Gestão de Sessões:**
-- Registrar datas e resumos das sessões
-- Adicionar notas importantes e marcos da história
-- Editar e visualizar sessões
-- Deletar sessões
-
-**Gerenciamento de Mídia:**
-- Fazer upload de imagens (mapas, arte de personagens)
-- Visualizar galeria de imagens
-- Deletar imagens
-
-### 2.2. Para o Jogador (Interface Mobile)
-
-O Jogador tem acesso a um aplicativo mobile focado em visualização e acompanhamento:
-
-**Autenticação:**
-- Login e logout
-- Registro de nova conta
-
-**Visualização de Campanhas:**
-- Listar campanhas em que o jogador participa
-- Selecionar uma campanha para acompanhar
-
-**Ficha de Personagem:**
-- Visualizar atributos (Força, Destreza, Constituição, Inteligência, Sabedoria, Carisma)
-- Visualizar habilidades
-- Visualizar histórico do personagem
-
-**Inventário:**
-- Visualizar todos os itens do personagem
-- Ver descrição e propriedades de cada item
-- Acompanhar quantidade de itens
-
-**Diário de Bordo:**
-- Visualizar lista de todas as sessões da campanha
-- Ler resumos das sessões
-- Acompanhar marcos e notas importantes
-
-**Mapas e Imagens:**
-- Visualizar mapas e imagens da campanha
-- Zoom e visualização em tela cheia
+The program solves the problem of information fragmentation in RPG campaigns by offering a single place to store and manage campaigns, characters, NPCs, items, sessions, and media (maps, images).
 
 ---
 
-## 3. Telas da Aplicação Web (Mestre)
+## 2. Main Features
 
-### 3.1. Tela de Login
-Formulário simples com campos de email e senha. Opções para recuperar senha ou criar nova conta.
+### 2.1. For the Game Master (Web Interface)
+
+The Game Master has access to a complete management panel with the following features:
+
+**Authentication:**
+- Secure login and logout
+- New account registration
+- Password recovery
+
+**Campaign Management:**
+- Create new campaigns with name, description, and setting
+- Edit campaign information
+- View all campaigns
+- Delete campaigns
+- Invite players to participate
+
+**Character Management:**
+- Create player character sheets with attributes (Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma)
+- Edit character information
+- View complete character sheets
+- Delete characters
+- Manage inventory for each character
+
+**NPC Management:**
+- Create non-player characters with description and role in the campaign
+- Edit and view NPCs
+- Delete NPCs
+- Organize by relationships
+
+**Item Management:**
+- Create items, weapons, armor, and artifacts
+- Categorize by type and rarity
+- Edit and view items
+- Assign items to characters
+- Delete items
+
+**Session Management:**
+- Record session dates and summaries
+- Add important notes and story milestones
+- Edit and view sessions
+- Delete sessions
+
+**Media Management:**
+- Upload images (maps, character art)
+- View image gallery
+- Delete images
+
+### 2.2. For the Player (Mobile Interface)
+
+The Player has access to a mobile application focused on viewing and tracking:
+
+**Authentication:**
+- Login and logout
+- New account registration
+
+**Campaign Viewing:**
+- List campaigns the player participates in
+- Select a campaign to track
+
+**Character Sheet:**
+- View attributes (Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma)
+- View skills
+- View character history
+
+**Inventory:**
+- View all character items
+- See description and properties of each item
+- Track item quantities
+
+**Campaign Journal:**
+- View list of all campaign sessions
+- Read session summaries
+- Track milestones and important notes
+
+**Maps and Images:**
+- View campaign maps and images
+- Zoom and full-screen viewing
+
+---
+
+## 3. Web Application Screens (Game Master)
+
+### 3.1. Login Screen
+Simple form with email and password fields. Options to recover password or create new account.
 
 ### 3.2. Dashboard (Home)
-Página inicial mostrando:
-- Bem-vindo personalizado
-- Lista de campanhas recentes
-- Estatísticas rápidas (total de campanhas, personagens, próxima sessão)
-- Botão para criar nova campanha
+Home page showing:
+- Personalized welcome message
+- List of recent campaigns
+- Quick statistics (total campaigns, characters, next session)
+- Button to create new campaign
 
-### 3.3. Lista de Campanhas
-Tabela ou grid mostrando todas as campanhas com:
-- Nome da campanha
-- Data de criação
-- Número de personagens
-- Status (ativa, pausada, concluída)
-- Botões de ação (abrir, editar, deletar)
+### 3.3. Campaign List
+Table or grid showing all campaigns with:
+- Campaign name
+- Creation date
+- Number of characters
+- Status (active, paused, completed)
+- Action buttons (open, edit, delete)
 
-### 3.4. Detalhes da Campanha
-Página principal da campanha com abas para:
-- **Personagens:** Lista de personagens de jogadores com opções de criar, editar, visualizar e deletar
-- **NPCs:** Lista de NPCs com opções de criar, editar, visualizar e deletar
-- **Itens:** Lista de itens com opções de criar, editar, visualizar e deletar
-- **Sessões:** Lista de sessões com opções de criar, editar, visualizar e deletar
-- **Mídia:** Galeria de imagens com upload e delete
-- **Configurações:** Editar informações da campanha e convidar jogadores
+### 3.4. Campaign Details
+Main campaign page with tabs for:
+- **Characters:** List of player characters with options to create, edit, view, and delete
+- **NPCs:** List of NPCs with options to create, edit, view, and delete
+- **Items:** List of items with options to create, edit, view, and delete
+- **Sessions:** List of sessions with options to create, edit, view, and delete
+- **Media:** Image gallery with upload and delete options
+- **Settings:** Edit campaign information and invite players
 
-### 3.5. Criar/Editar Personagem
-Formulário com campos:
-- Nome, Classe, Raça, Nível
-- Atributos (Força, Destreza, Constituição, Inteligência, Sabedoria, Carisma)
-- Habilidades (campo de texto)
-- Histórico (editor de texto rico)
+### 3.5. Create/Edit Character
+Form with fields:
+- Name, Class, Race, Level
+- Attributes (Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma)
+- Skills (text field)
+- History (rich text editor)
 
-### 3.6. Criar/Editar NPC
-Formulário com campos:
-- Nome, Descrição, Papel na Campanha
-- Atributos e Habilidades
-- Relacionamentos
+### 3.6. Create/Edit NPC
+Form with fields:
+- Name, Description, Role in Campaign
+- Attributes and Skills
+- Relationships
 
-### 3.7. Criar/Editar Item
-Formulário com campos:
-- Nome, Descrição
-- Tipo (dropdown: arma, armadura, consumível, artefato, misc)
-- Raridade (dropdown: comum, incomum, raro, muito raro, lendário)
-- Propriedades especiais e efeitos
+### 3.7. Create/Edit Item
+Form with fields:
+- Name, Description
+- Type (dropdown: weapon, armor, consumable, artifact, misc)
+- Rarity (dropdown: common, uncommon, rare, very rare, legendary)
+- Special properties and effects
 
-### 3.8. Criar/Editar Sessão
-Formulário com campos:
-- Data, Hora, Título
-- Resumo (editor de texto rico)
-- Notas importantes
-- Marcos da história
+### 3.8. Create/Edit Session
+Form with fields:
+- Date, Time, Title
+- Summary (rich text editor)
+- Important notes
+- Story milestones
 
-### 3.9. Galeria de Mídia
-Grid de imagens com:
-- Thumbnails das imagens
-- Opção de upload drag-and-drop
-- Botões de visualizar e deletar
+### 3.9. Media Gallery
+Image grid with:
+- Image thumbnails
+- Drag-and-drop upload option
+- View and delete buttons
 
-### 3.10. Convidar Jogadores
-Formulário para:
-- Inserir email do jogador
-- Enviar convite
-- Visualizar status de convites (pendente, aceito, recusado)
+### 3.10. Invite Players
+Form for:
+- Enter player email
+- Send invitation
+- View invitation status (pending, accepted, declined)
 
 ---
 
-## 4. Telas do Aplicativo Mobile (Jogador)
+## 4. Mobile Application Screens (Player)
 
-### 4.1. Tela de Login
-Formulário simples otimizado para mobile com campos de email e senha.
+### 4.1. Login Screen
+Simple form optimized for mobile with email and password fields.
 
 ### 4.2. Dashboard (Home)
-Lista de campanhas em que o jogador participa, mostrando:
-- Nome da campanha
-- Nome do Mestre
-- Número de personagens
-- Botão para entrar na campanha
+List of campaigns the player participates in, showing:
+- Campaign name
+- Game Master name
+- Number of characters
+- Button to enter campaign
 
-### 4.3. Ficha de Personagem
-Tela com abas deslizáveis mostrando:
-- **Atributos:** Os 6 atributos principais com valores e modificadores
-- **Habilidades:** Lista de habilidades com descrição
-- **Inventário:** Lista de itens do personagem
-- **Histórico:** Informações do histórico do personagem
+### 4.3. Character Sheet
+Screen with sliding tabs showing:
+- **Attributes:** The 6 main attributes with values and modifiers
+- **Skills:** List of skills with description
+- **Inventory:** List of character items
+- **History:** Character history information
 
-### 4.4. Inventário
-Lista de itens do personagem mostrando:
-- Nome do item
-- Tipo e raridade
-- Quantidade
-- Opção de expandir para ver descrição completa
+### 4.4. Inventory
+List of character items showing:
+- Item name
+- Type and rarity
+- Quantity
+- Option to expand for full description
 
-### 4.5. Diário de Bordo
-Lista de sessões da campanha mostrando:
-- Data da sessão
-- Título da sessão
-- Resumo breve
-- Opção de expandir para ver resumo completo
+### 4.5. Campaign Journal
+List of campaign sessions showing:
+- Session date
+- Session title
+- Brief summary
+- Option to expand for full summary
 
-### 4.6. Mapas e Imagens
-Galeria de imagens da campanha com:
-- Thumbnails das imagens
-- Opção de visualizar em tela cheia
-- Zoom e navegação
+### 4.6. Maps and Images
+Campaign image gallery with:
+- Image thumbnails
+- Option to view full-screen
+- Zoom and navigation
 
-### 4.7. Perfil
-Página com informações do jogador e opções de logout.
+### 4.7. Profile
+Page with player information and logout options.
 
 ---
 
-## 5. Tecnologias a Serem Utilizadas
+## 5. Technologies to Be Used
 
 ### 5.1. Back-end / API
 
-**Linguagem e Framework:**
-- A definir
+**Language and Framework:**
+- To be defined
 
-**Banco de Dados:**
-- A definir
+**Database:**
+- To be defined
 
-**Autenticação:**
-- A definir
+**Authentication:**
+- To be defined
 
-**Armazenamento de Arquivos:**
-- A definir
+**File Storage:**
+- To be defined
 
-### 5.2. Aplicação Web
+### 5.2. Web Application
 
-**Framework Frontend:**
-- A definir
+**Frontend Framework:**
+- To be defined
 
-**Linguagem:**
-- A definir
+**Language:**
+- To be defined
 
-**Estilização:**
-- A definir
+**Styling:**
+- To be defined
 
-**Gerenciamento de Estado:**
-- A definir
+**State Management:**
+- To be defined
 
-**Cliente HTTP:**
-- A definir
+**HTTP Client:**
+- To be defined
 
-### 5.3. Aplicativo Mobile
+### 5.3. Mobile Application
 
 **Framework:**
-- A definir
+- To be defined
 
-**Linguagem:**
-- A definir
+**Language:**
+- To be defined
 
-**Gerenciamento de Estado:**
-- A definir
+**State Management:**
+- To be defined
 
-**Cliente HTTP:**
-- A definir
+**HTTP Client:**
+- To be defined
 
-### 5.4. Ferramentas e Infraestrutura
+### 5.4. Tools and Infrastructure
 
-**Versionamento:**
-- A definir
+**Version Control:**
+- To be defined
 
-**Ambiente de Desenvolvimento:**
-- A definir
+**Development Environment:**
+- To be defined
 
-**Testes:**
-- A definir
+**Testing:**
+- To be defined
 
-**Documentação da API:**
-- A definir
+**API Documentation:**
+- To be defined
 
 ---
 
-## 6. Conclusão
+## 6. Conclusion
 
-O QuestForge é um sistema completo para gerenciamento de campanhas de RPG de mesa, com interfaces especializadas para Mestres (web) e Jogadores (mobile). O sistema oferece todas as funcionalidades necessárias para organizar, gerenciar e acompanhar campanhas de forma centralizada e intuitiva.
+QuestForge is a complete system for managing tabletop RPG campaigns, with specialized interfaces for Game Masters (web) and Players (mobile). The system provides all necessary features to organize, manage, and track campaigns in a centralized and intuitive manner.
