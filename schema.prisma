@@ -98,14 +98,14 @@ model Campaign {
   updatedAt   DateTime       @updatedAt
 
   // Relations
-  gameMaster CampaignMember[] @relation("CampaignToMember")
+  gameMaster User             @relation("GameMaster", fields: [gameMasterId], references: [id], onDelete: Cascade)
+  members    CampaignMember[]
   characters Character[]
   npcs       NPC[]
   items      Item[]
   sessions   Session[]
   media      Media[]
   invitations Invitation[]
-  creator    User            @relation("GameMaster", fields: [gameMasterId], references: [id], onDelete: Cascade)
 
   @@index([gameMasterId])
   @@index([status])
