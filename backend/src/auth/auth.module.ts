@@ -6,6 +6,7 @@ import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { UsersModule } from '../users/users.module';
 import { JwtStrategy } from './strategies/jwt.strategy';
+import type { StringValue } from 'ms';
 
 @Module({
   imports: [
@@ -14,11 +15,11 @@ import { JwtStrategy } from './strategies/jwt.strategy';
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService): JwtModuleOptions => {
-        const expiresIn = configService.get<string>('JWT_EXPIRES_IN') || '1d';
+        const expiresIn = (configService.get<string>('JWT_EXPIRES_IN') || '1d') as StringValue;
         return {
           secret: configService.get<string>('JWT_SECRET') || 'default-secret',
           signOptions: {
-            expiresIn: expiresIn as any, // The string format like '1d' is valid for jwt
+            expiresIn,
           },
         };
       },

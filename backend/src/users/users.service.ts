@@ -1,7 +1,7 @@
 import { Injectable, ConflictException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from './entities/user.entity';
+import { User, UserRole } from './entities/user.entity';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
@@ -15,7 +15,7 @@ export class UsersService {
     email: string,
     password: string,
     name: string,
-    role?: string,
+    role?: UserRole,
   ): Promise<User> {
     const existingUser = await this.usersRepository.findOne({
       where: { email },
@@ -29,7 +29,7 @@ export class UsersService {
       email,
       password: hashedPassword,
       name,
-      role: role as any,
+      role: role || UserRole.PLAYER,
     });
 
     return this.usersRepository.save(user);

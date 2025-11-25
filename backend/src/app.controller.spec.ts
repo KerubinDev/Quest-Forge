@@ -14,9 +14,12 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+  describe('health check', () => {
+    it('should return health check object', () => {
+      const result = appController.getHealthCheck();
+      expect(result).toHaveProperty('status', 'ok');
+      expect(result).toHaveProperty('message', 'QuestForge API is running');
+      expect(result).toHaveProperty('timestamp');
     });
   });
 });
