@@ -1,0 +1,304 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User roles enum
+enum UserRole {
+  GAME_MASTER
+  PLAYER
+}
+
+// Campaign status enum
+enum CampaignStatus {
+  ACTIVE
+  PAUSED
+  COMPLETED
+}
+
+// Item type enum
+enum ItemType {
+  WEAPON
+  ARMOR
+  CONSUMABLE
+  ARTIFACT
+  MISC
+}
+
+// Item rarity enum
+enum ItemRarity {
+  COMMON
+  UNCOMMON
+  RARE
+  VERY_RARE
+  LEGENDARY
+}
+
+// Invitation status enum
+enum InvitationStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+}
+
+// User model - represents both Game Masters and Players
+model User {
+  id            String   @id @default(uuid())
+  email         String   @unique
+  password      String   // Should be hashed
+  name          String
+  role          UserRole @default(PLAYER)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  campaignsCreated      Campaign[]          @relation("GameMaster")
+  campaignMemberships   CampaignMember[]
+  characters            Character[]
+  invitationsSent       Invitation[]        @relation("Sender")
+  invitationsReceived   Invitation[]        @relation("Receiver")
+  refreshTokens         RefreshToken[]
+
+  @@index([email])
+  @@map("users")
+}
+
+// RefreshToken model - for JWT refresh token management
+model RefreshToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([token])
+  @@map("refresh_tokens")
+}
+
+// Campaign model - represents an RPG campaign
+model Campaign {
+  id          String         @id @default(uuid())
+  name        String
+  description String?        @db.Text
+  setting     String?        @db.Text
+  status      CampaignStatus @default(ACTIVE)
+  gameMasterId String
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  // Relations
+  gameMaster CampaignMember[] @relation("CampaignToMember")
+  characters Character[]
+  npcs       NPC[]
+  items      Item[]
+  sessions   Session[]
+  media      Media[]
+  invitations Invitation[]
+  creator    User            @relation("GameMaster", fields: [gameMasterId], references: [id], onDelete: Cascade)
+
+  @@index([gameMasterId])
+  @@index([status])
+  @@map("campaigns")
+}
+
+// CampaignMember model - junction table for campaign members
+model CampaignMember {
+  id         String   @id @default(uuid())
+  campaignId String
+  userId     String
+  joinedAt   DateTime @default(now())
+
+  // Relations
+  campaign Campaign @relation("CampaignToMember", fields: [campaignId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([campaignId, userId])
+  @@index([campaignId])
+  @@index([userId])
+  @@map("campaign_members")
+}
+
+// Character model - represents player characters
+model Character {
+  id           String   @id @default(uuid())
+  name         String
+  class        String
+  race         String
+  level        Int      @default(1)
+  
+  // Attributes
+  strength     Int      @default(10)
+  dexterity    Int      @default(10)
+  constitution Int      @default(10)
+  intelligence Int      @default(10)
+  wisdom       Int      @default(10)
+  charisma     Int      @default(10)
+  
+  // Additional info
+  skills       String?  @db.Text
+  history      String?  @db.Text
+  
+  campaignId   String
+  playerId     String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  campaign  Campaign              @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  player    User                  @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  inventory CharacterInventory[]
+
+  @@index([campaignId])
+  @@index([playerId])
+  @@map("characters")
+}
+
+// NPC model - represents non-player characters
+model NPC {
+  id           String   @id @default(uuid())
+  name         String
+  description  String?  @db.Text
+  role         String?
+  
+  // Attributes (optional for NPCs)
+  strength     Int?
+  dexterity    Int?
+  constitution Int?
+  intelligence Int?
+  wisdom       Int?
+  charisma     Int?
+  
+  skills       String?  @db.Text
+  relationships String? @db.Text
+  
+  campaignId   String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  campaign Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+
+  @@index([campaignId])
+  @@map("npcs")
+}
+
+// Item model - represents items, weapons, armor, artifacts
+model Item {
+  id              String      @id @default(uuid())
+  name            String
+  description     String?     @db.Text
+  type            ItemType
+  rarity          ItemRarity  @default(COMMON)
+  properties      String?     @db.Text
+  effects         String?     @db.Text
+  
+  campaignId      String
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  // Relations
+  campaign  Campaign              @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  inventory CharacterInventory[]
+
+  @@index([campaignId])
+  @@index([type])
+  @@index([rarity])
+  @@map("items")
+}
+
+// CharacterInventory model - junction table for character items
+model CharacterInventory {
+  id          String   @id @default(uuid())
+  characterId String
+  itemId      String
+  quantity    Int      @default(1)
+  equipped    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  character Character @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  item      Item      @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+  @@unique([characterId, itemId])
+  @@index([characterId])
+  @@index([itemId])
+  @@map("character_inventory")
+}
+
+// Session model - represents game sessions
+model Session {
+  id          String   @id @default(uuid())
+  title       String
+  date        DateTime
+  time        String?
+  summary     String   @db.Text
+  notes       String?  @db.Text
+  milestones  String?  @db.Text
+  
+  campaignId  String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  campaign Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+
+  @@index([campaignId])
+  @@index([date])
+  @@map("sessions")
+}
+
+// Media model - represents images, maps, etc.
+model Media {
+  id          String   @id @default(uuid())
+  filename    String
+  originalName String
+  mimeType    String
+  size        Int
+  url         String
+  
+  campaignId  String
+  uploadedAt  DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  campaign Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+
+  @@index([campaignId])
+  @@map("media")
+}
+
+// Invitation model - represents campaign invitations
+model Invitation {
+  id         String           @id @default(uuid())
+  email      String
+  status     InvitationStatus @default(PENDING)
+  
+  campaignId String
+  senderId   String
+  receiverId String?
+  
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
+
+  // Relations
+  campaign Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  sender   User     @relation("Sender", fields: [senderId], references: [id], onDelete: Cascade)
+  receiver User?    @relation("Receiver", fields: [receiverId], references: [id], onDelete: Cascade)
+
+  @@index([campaignId])
+  @@index([email])
+  @@index([status])
+  @@map("invitations")
+}
