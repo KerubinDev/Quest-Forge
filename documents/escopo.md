@@ -216,61 +216,70 @@ Page with player information and logout options.
 ### 5.1. Back-end / API
 
 **Language and Framework:**
-- To be defined
+- TypeScript + NestJS
 
 **Database:**
-- To be defined
+- PostgreSQL
 
 **Authentication:**
-- To be defined
+- JWT (Access + Refresh Tokens)
 
 **File Storage:**
 - To be defined
 
+---
+
 ### 5.2. Web Application
 
 **Frontend Framework:**
-- To be defined
+- React
 
 **Language:**
-- To be defined
+- TypeScript
 
 **Styling:**
-- To be defined
+- TailwindCSS + Shadcn/UI
 
 **State Management:**
-- To be defined
+- Zustand
 
 **HTTP Client:**
-- To be defined
+- Axios
+
+---
 
 ### 5.3. Mobile Application
 
 **Framework:**
-- To be defined
+- React Native (Expo)
 
 **Language:**
-- To be defined
+- TypeScript
 
 **State Management:**
-- To be defined
+- Zustand
 
 **HTTP Client:**
-- To be defined
+- Axios
+
+---
 
 ### 5.4. Tools and Infrastructure
 
 **Version Control:**
-- To be defined
+- Git + GitHub
 
 **Development Environment:**
-- To be defined
+- VS Code
 
 **Testing:**
-- To be defined
+- Jest (Backend)  
+- React Testing Library (Web)  
+- Jest + Testing Library (Mobile)
 
 **API Documentation:**
-- To be defined
+- Swagger (via NestJS)
+
 
 ---
 
