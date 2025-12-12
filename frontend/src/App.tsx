@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard'
 import DevConsole from './pages/DevConsole'
 import CampaignsList from './pages/CampaignsList'
 import CampaignDetails from './pages/CampaignDetails'
+import CharactersList from './pages/CharactersList'
 import DashboardLayout from './layouts/DashboardLayout'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import { Toaster } from 'sonner'
@@ -32,7 +33,7 @@ function App() {
                             <Route path="/dashboard" element={<Dashboard />} />
                             <Route path="/campaigns" element={<CampaignsList />} />
                             <Route path="/campaigns/:id" element={<CampaignDetails />} />
-                            <Route path="/characters" element={<div className="p-4">Characters Page (Coming Soon)</div>} />
+                            <Route path="/characters" element={<CharactersList />} />
                             <Route path="/dev" element={<DevConsole />} />
                         </Route>
                     </Route>
