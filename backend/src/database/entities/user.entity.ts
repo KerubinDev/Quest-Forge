@@ -8,6 +8,7 @@ import { CampaignMember } from './campaign-member.entity';
 export enum UserRole {
   PLAYER = 'player',
   GAME_MASTER = 'game_master',
+  ADMIN = 'admin',
 }
 
 @Entity('users')
@@ -46,7 +47,7 @@ export class User {
 
   @OneToMany(() => RefreshToken, (refreshToken) => refreshToken.user)
   refreshTokens: RefreshToken[];
-  
+
   @OneToMany(() => CampaignMember, (member) => member.user)
   memberships: CampaignMember[];
 }

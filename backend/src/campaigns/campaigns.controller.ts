@@ -12,6 +12,11 @@ export class CampaignsController {
         return this.campaignsService.create(createCampaignDto, req.user.id);
     }
 
+    @Post('join')
+    join(@Body() body: { inviteCode: string }, @Request() req) {
+        return this.campaignsService.join(body.inviteCode, req.user.id);
+    }
+
     @Get()
     findAll(@Request() req) {
         return this.campaignsService.findAll(req.user.id);
@@ -30,5 +35,10 @@ export class CampaignsController {
     @Delete(':id')
     remove(@Param('id') id: string) {
         return this.campaignsService.remove(id);
+    }
+
+    @Delete(':id/members/:userId')
+    removeMember(@Param('id') id: string, @Param('userId') userId: string) {
+        return this.campaignsService.removeMember(id, userId);
     }
 }
