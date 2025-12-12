@@ -4,34 +4,48 @@ import { Button } from "../components/ui/button"
 import { Input } from "../components/ui/input"
 import { Label } from "../components/ui/label"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card"
-import { Sword, Shield, Scroll } from "lucide-react"
-import { useAuth } from "../context/AuthContext"
+import { Sword, Shield, Scroll, Crown, User } from "lucide-react"
 import api from "../lib/api"
+import { useAuth } from "../context/AuthContext"
+import { Tabs, TabsList, TabsTrigger } from "../components/ui/tabs"
 
-export default function Login() {
+export default function Register() {
+    const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
+    const [role, setRole] = useState<"player" | "game_master">("player")
     const [isLoading, setIsLoading] = useState(false)
-    const { login } = useAuth()
     const navigate = useNavigate()
+    const { login } = useAuth()
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
+        if (password !== confirmPassword) {
+            alert("Passwords do not match!")
+            return
+        }
         setIsLoading(true)
-        try {
-            const response = await api.post('/auth/login', { email, password })
-            const { access_token } = response.data
 
-            // Fetch user profile
+        try {
+            // 1. Register
+            await api.post('/auth/register', { name, email, password, role })
+
+            // 2. Auto-login
+            const loginResponse = await api.post('/auth/login', { email, password })
+            const { access_token } = loginResponse.data
+
+            // 3. Fetch Profile
             const profileResponse = await api.get('/users/profile', {
                 headers: { Authorization: `Bearer ${access_token}` }
             })
 
             login(access_token, profileResponse.data)
             navigate('/dashboard')
+
         } catch (error) {
-            console.error("Login failed", error)
-            alert("Login failed! Please check your credentials.")
+            console.error("Registration failed", error)
+            alert("Registration failed! Please try again.")
         } finally {
             setIsLoading(false)
         }
@@ -56,16 +70,38 @@ export default function Login() {
                 <CardHeader className="space-y-1 text-center">
                     <div className="flex justify-center mb-4">
                         <div className="p-3 rounded-full bg-primary/10 text-primary">
-                            <Sword size={32} />
+                            <Scroll size={32} />
                         </div>
                     </div>
-                    <CardTitle className="text-2xl font-bold tracking-tight">QuestForge</CardTitle>
+                    <CardTitle className="text-2xl font-bold tracking-tight">Join the Adventure</CardTitle>
                     <CardDescription>
-                        Enter your credentials to access the realm
+                        Create your account to start managing campaigns
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
                     <form onSubmit={handleSubmit} className="space-y-4">
+                        <Tabs defaultValue="player" className="w-full" onValueChange={(v) => setRole(v as any)}>
+                            <TabsList className="grid w-full grid-cols-2">
+                                <TabsTrigger value="player" className="flex gap-2">
+                                    <User className="h-4 w-4" /> Player
+                                </TabsTrigger>
+                                <TabsTrigger value="game_master" className="flex gap-2">
+                                    <Crown className="h-4 w-4" /> Game Master
+                                </TabsTrigger>
+                            </TabsList>
+                        </Tabs>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="name">Name</Label>
+                            <Input
+                                id="name"
+                                type="text"
+                                placeholder="Gandalf the Grey"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                required
+                            />
+                        </div>
                         <div className="space-y-2">
                             <Label htmlFor="email">Email</Label>
                             <Input
@@ -78,15 +114,7 @@ export default function Login() {
                             />
                         </div>
                         <div className="space-y-2">
-                            <div className="flex items-center justify-between">
-                                <Label htmlFor="password">Password</Label>
-                                <Link
-                                    to="/forgot-password"
-                                    className="text-sm font-medium text-primary hover:underline"
-                                >
-                                    Forgot password?
-                                </Link>
-                            </div>
+                            <Label htmlFor="password">Password</Label>
                             <Input
                                 id="password"
                                 type="password"
@@ -95,16 +123,26 @@ export default function Login() {
                                 required
                             />
                         </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="confirmPassword">Confirm Password</Label>
+                            <Input
+                                id="confirmPassword"
+                                type="password"
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                required
+                            />
+                        </div>
                         <Button type="submit" className="w-full" disabled={isLoading}>
-                            {isLoading ? "Casting spell..." : "Enter Realm"}
+                            {isLoading ? "Scribing..." : "Create Account"}
                         </Button>
                     </form>
                 </CardContent>
                 <CardFooter className="flex flex-col space-y-2 text-center">
                     <div className="text-sm text-muted-foreground">
-                        Don't have an account?{" "}
-                        <Link to="/register" className="text-primary font-medium hover:underline">
-                            Join the adventure
+                        Already have an account?{" "}
+                        <Link to="/login" className="text-primary font-medium hover:underline">
+                            Login
                         </Link>
                     </div>
                 </CardFooter>

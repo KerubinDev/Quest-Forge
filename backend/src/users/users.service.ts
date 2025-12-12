@@ -22,4 +22,11 @@ export class UsersService {
         const user = this.usersRepository.create(userData);
         return this.usersRepository.save(user);
     }
+    async update(user: User): Promise<User> {
+        return this.usersRepository.save(user);
+    }
+
+    async deleteAll(): Promise<void> {
+        await this.usersRepository.delete({});
+    }
 }
