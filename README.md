@@ -1,6 +1,6 @@
 <div align="center">
 
-![QuestForge Banner](https://raw.githubusercontent.com/yourusername/quest-forge/main/.github/banner.png)
+![QuestForge Banner](https://raw.githubusercontent.com/kerubindev/quest-forge/main/.github/banner.png)
 
 # ⚔️ QuestForge
 
@@ -12,10 +12,13 @@
 [![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black)](https://reactjs.org/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+![Version](https://img.shields.io/badge/version-0.3.0-blue.svg)
+![Status](https://img.shields.io/badge/status-in%20development-orange.svg)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/kerubindev/quest-forge/graphs/commit-activity)
 
 **An integrated platform for managing tabletop RPG campaigns with power and elegance**
 
-[Features](#-features) • [Tech Stack](#-tech-stack) • [Getting Started](#-getting-started) • [Documentation](#-documentation) • [Roadmap](#-roadmap)
+[Features](#-features) • [Screenshots](#-screenshots) • [Tech Stack](#-tech-stack) • [Getting Started](#-getting-started) • [Contributing](#-contributing) • [Roadmap](#-roadmap)
 
 </div>
 
@@ -59,6 +62,26 @@
 | 🎒 **Inventory Tracker** | See all your items, equipment, and consumables in one place |
 | 📜 **Campaign Journal** | Read session summaries and track the story as it unfolds |
 | 🗺️ **Maps & Images** | Access campaign maps and artwork with zoom and full-screen viewing |
+
+</div>
+
+---
+
+## 📸 Screenshots
+
+<div align="center">
+
+### 🎮 Game Master Dashboard
+
+*A powerful, intuitive interface for managing your entire campaign*
+
+![Features Showcase](.github/features.png)
+
+### ⚡ Modern Architecture
+
+*Built with cutting-edge technologies for performance and scalability*
+
+![Architecture Diagram](.github/architecture.png)
 
 </div>
 
@@ -330,7 +353,11 @@ sequenceDiagram
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please follow these steps:
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**! 🎉
+
+Please read our [Contributing Guide](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+
+### Quick Start for Contributors
 
 1. **Fork** the repository
 2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
@@ -338,13 +365,26 @@ Contributions are welcome! Please follow these steps:
 4. **Push** to the branch (`git push origin feature/amazing-feature`)
 5. **Open** a Pull Request
 
-### Code Style
+### Ways to Contribute
 
-- Follow the existing code structure and naming conventions
-- Use TypeScript for all new code
-- Write meaningful commit messages
-- Add tests for new features
-- Update documentation as needed
+- 🐛 **Report bugs** via [GitHub Issues](https://github.com/kerubindev/quest-forge/issues)
+- 💡 **Suggest features** that would improve the RPG experience
+- 📝 **Improve documentation** to help other users
+- 🔧 **Submit pull requests** with bug fixes or new features
+- ⭐ **Star the project** to show your support
+
+For more details, check out our [Contributing Guide](CONTRIBUTING.md).
+
+---
+
+## 🔗 Important Links
+
+- 📚 **[Documentation](documents/)** - Detailed project documentation
+- 🐛 **[Report Bug](https://github.com/kerubindev/quest-forge/issues/new?template=bug_report.md)** - Found a bug? Let us know!
+- ✨ **[Request Feature](https://github.com/kerubindev/quest-forge/issues/new?template=feature_request.md)** - Have an idea? Share it!
+- 🔒 **[Security Policy](SECURITY.md)** - Report security vulnerabilities
+- 📋 **[Changelog](CHANGELOG.md)** - See what's new in each version
+- 🤝 **[Contributing](CONTRIBUTING.md)** - Learn how to contribute
 
 ---
 
