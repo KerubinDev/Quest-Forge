@@ -1,6 +1,6 @@
 <div align="center">
 
-![QuestForge Banner](https://raw.githubusercontent.com/yourusername/quest-forge/main/.github/banner.png)
+![QuestForge Banner](https://raw.githubusercontent.com/kerubindev/quest-forge/main/.github/banner.png)
 
 # ⚔️ QuestForge
 
