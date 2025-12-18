@@ -21,6 +21,9 @@ export class Campaign {
     @Column()
     name: string;
 
+    @Column({ unique: true })
+    inviteCode: string;
+
     @Column({ type: 'text', nullable: true })
     description: string;
 
